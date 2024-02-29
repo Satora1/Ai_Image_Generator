@@ -4,10 +4,10 @@ const Home = () => {
   return (
     <header>
     <div>
-      <p>  Home  </p>
+      <p> </p>
 
 
-      <UserButton afterSignOutUrl='/' />
+    
     </div>
       </header>
   )
