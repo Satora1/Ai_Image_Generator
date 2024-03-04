@@ -7,7 +7,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "../ui/button"
 const MobileNav = () => {
-const pathname=usePathname();
+    const pathname = usePathname();
     return (
         <header className="header">
             <Link href="/" className="flex items-center gap-2 md:py-2">
@@ -46,17 +46,17 @@ const pathname=usePathname();
                                     const isActive = link.route === pathname
 
                                     return (
-                                        
+
                                         <li
-                                         className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
-                                        key={link.route}>
-                                            <Link className='sidebar-link cursor-pointer' href={link.route}>
+                                            className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
+                                            key={link.route}>
+                                            <Link className='sidebar-link cursor-pointer ' href={link.route}>
                                                 <Image
                                                     src={link.icon}
                                                     alt="logo"
                                                     width={24}
                                                     height={24}
-                                                   
+
                                                 />
                                                 {link.label}
                                             </Link>
@@ -68,7 +68,12 @@ const pathname=usePathname();
                     </Sheet>
 
                 </SignedIn>
-
+                <SignedOut>
+                        <Button asChild className='button bg-purple-gradient bg-cover'>
+                            <Link href="/sign-in">Login
+                            </Link>
+                        </Button>
+                    </SignedOut>
             </nav>
         </header>
     )
