@@ -28,7 +28,7 @@ export const connectToDatabase = async () => {
   console.log('Connecting to the database...');
 
   cached.promise = mongoose.connect(MONGODB_URL, { 
-    dbName: 'image_ai', bufferCommands: false 
+    dbName: 'IMAGE_AI', bufferCommands: false 
   });
 
   cached.conn = await cached.promise;
