@@ -90,9 +90,11 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance }
                         formLabel="Aspect Ratio"
                         className="w-full"
                         render={({ field }) => (
-                            <Select>
-                                <SelectTrigger className="w-[180px]">
-                                    <SelectValue placeholder="Theme" />
+                            <Select
+                            onValueChange={(value)=>
+                            onSelectFieldHandler(value,field.onChange)}>
+                                <SelectTrigger className="select-field">
+                                    <SelectValue placeholder="Select size" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="light">Light</SelectItem>
