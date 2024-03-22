@@ -28,6 +28,7 @@ import { useState, useTransition } from "react"
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils"
 import { updateCredits } from "@/lib/actions/user.actions"
 import MediaUploader from "./MediaUploader"
+import TransformedImage from "./TransformedImage"
 
 export const formSchema = z.object({
     title: z.string(),
@@ -110,7 +111,7 @@ setTransformationConfig(
 )
 setnewTransformation(null)
 startTransition(async()=>{
-   // await updateCredits(userId,creditFee)
+  await updateCredits(userId,-1)
 })
     }
 
@@ -218,10 +219,21 @@ render={({field})=>(
     type={type}/>
 )}
 />
+
+
+<TransformedImage
+image={image}
+type={type}
+title={form.getValues().title}
+isTransforming={isTransforming}
+setIsTransforming={setIsTransforming}
+transformationConfig={transformationConfig}
+/>
     </div>
 
 
                 <div className="flex flex-col gap-4">
+
                     <Button type="submit"
                         className="submit-button capitalize"
                         disabled={isTransforming || newTransformation
