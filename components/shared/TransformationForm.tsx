@@ -114,33 +114,34 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                 }
 
             }
-            if (action === "Update") {
+            if(action === 'Update') {
                 try {
-                    const updatedImage = await updateImage({
-                        image: {
-                            ...imageData,
-                            _id: data._id
-                        },
-                        userId,
-                        path: `/transformations/${data._id}`
-                    })
-                    if (updatedImage) {
-                        router.push(`/transformations/${updatedImage._id}`)
-                    }
+                  const updatedImage = await updateImage({
+                    image: {
+                      ...imageData,
+                      _id: data._id
+                    },
+                    userId,
+                    path: `/transformations/${data._id}`
+                  })
+        
+                  if(updatedImage) {
+                    router.push(`/transformations/${updatedImage._id}`)
+                  }
+                } catch (error) {
+                  console.log(error);
                 }
-                catch (error) {
-                    console.log(error)
-                }
+              }
             }
-        }
-        setIsSubmiting(false)
-    }
+        
+            setIsSubmiting(false)
+          }
 
     const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
         const imageSize = aspectRatioOptions[value as AspectRatioKey]
         setImage((prevState: any) => ({
             ...prevState,
-            aspectration: imageSize.aspectRatio,
+            aspectratio: imageSize.aspectRatio,
             width: imageSize.width,
             height: imageSize.height,
 
@@ -200,7 +201,8 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                         render={({ field }) => (
                             <Select
                                 onValueChange={(value) =>
-                                    onSelectFieldHandler(value, field.onChange)}>
+                                    onSelectFieldHandler(value, field.onChange)}
+                                value={field.value}>
                                 <SelectTrigger className="select-field">
                                     <SelectValue placeholder="Select size" />
                                 </SelectTrigger>
@@ -229,7 +231,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                                     "Object to recolor"
                             }
                             className="w-full"
-                            render={(({ field }) => (
+                            render={({ field }) => (
                                 <Input
                                     value={field.value}
                                     className="input-field"
@@ -240,7 +242,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                                         field.onChange
                                     )}
                                 />
-                            ))}
+                            )}
                         />
 
 
