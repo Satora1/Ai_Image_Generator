@@ -160,9 +160,10 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                     [fieldName === 'prompt' ? 'prompt' : "to"]:
                         value
                 }
-            }))
+            })) 
+        }, 1000)();
             return onChangeField(value)
-        }, 1000);
+       
 
         //slow down input
     }
